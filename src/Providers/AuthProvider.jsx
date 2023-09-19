@@ -5,16 +5,13 @@ import axios from "axios";
 
 
 export const AuthContext = createContext(null);
-const googleProvider = new GoogleAuthProvider();
+
 const auth = getAuth(app);
+
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(null);
-
-    const googleSignIn=()=>{
-        setLoading(true);
-        return signInWithPopup(auth,googleProvider);
-    }
+    const [loading, setLoading] = useState(true);
+    const googleProvider = new GoogleAuthProvider();
 
     const createUser = (email,password)=>{
         setLoading(true)
@@ -25,6 +22,11 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth,email,password)
     }
+    const googleSignIn=()=>{
+        setLoading(true);
+        return signInWithPopup(auth,googleProvider);
+    }
+
 
     const logOut = () =>{
         setLoading(true);
@@ -50,6 +52,9 @@ const AuthProvider = ({children}) => {
             localStorage.setItem('access-token',data.data.token)
             setLoading(false)
         })
+
+       
+
         }
         else
         {
