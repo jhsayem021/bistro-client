@@ -1,9 +1,7 @@
-
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from 'react-hook-form';
-
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import SectionTitle from '../../../Component/SectionTitle/SectionTitle';
 
 const img_hosting_token = import.meta.env.VITE_imgbb_key;
 
@@ -49,9 +47,9 @@ const AddItem = () => {
     
     
     return (
-        <div className="w-full ">
+        <div className="w-full px-10">
             <SectionTitle subHeading="What's new" heading="Add an item" ></SectionTitle>
-            <form className='w-5/6 mx-auto' onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full mb-4">
                     <label className="label">
                         <span className="label-text font-semibold">Recipe Name*</span>
@@ -67,12 +65,12 @@ const AddItem = () => {
                         </label>
                         <select defaultValue="Pick One" {...register("category", { required: true })} className="select select-bordered">
                             <option disabled>Pick One</option>
-                            <option>pizza</option>
-                            <option>soup</option>
-                            <option>salad</option>
-                            <option>dessert</option>
+                            <option>Pizza</option>
+                            <option>Soup</option>
+                            <option>Salad</option>
+                            <option>Dessert</option>
                             <option>Desi</option>
-                            <option>drinks</option>
+                            <option>Drinks</option>
                         </select>
                     </div>
                     <div className="form-control w-full ml-4">

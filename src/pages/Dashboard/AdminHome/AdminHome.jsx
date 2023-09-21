@@ -60,7 +60,7 @@ const AdminHome = () => {
 
     return (
         <div className="w-full m-4">
-            <h2 className="sm:text-3xl text-xl">Hi, {user?.displayName}</h2>
+            <h2 className="text-3xl">Hi, {user.displayName}</h2>
             <div className="stats shadow">
 
                 <div className="stat">

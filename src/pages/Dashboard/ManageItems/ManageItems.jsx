@@ -1,9 +1,9 @@
-import React from 'react';
-import useMenu from '../../../Hooks/useMenu';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
-import SectionTitle from '../../../Component/SectionTitle/SectionTitle';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt } from "react-icons/fa";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import useMenu from "../../../hooks/useMenu";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 
 const ManageItems = () => {
     const [menu, , refetch] = useMenu();

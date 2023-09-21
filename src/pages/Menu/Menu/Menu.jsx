@@ -1,60 +1,37 @@
 import { Helmet } from 'react-helmet-async';
 import Cover from '../../Shared/Cover/Cover';
-import menuBg from '../../../assets/menu/banner3.jpg'
-import dessertBg from '../../../assets/menu/dessert-bg.jpeg'
-import pizzaBg from '../../../assets/menu/pizza-bg.jpg'
-import soupBg from '../../../assets/menu/soup-bg.jpg'
-import saladBg from '../../../assets/menu/salad-bg.jpg'
-import useMenu from './../../../Hooks/useMenu';
-import SectionTitle from '../../../Component/SectionTitle/SectionTitle';
+import menuImg from '../../../assets/menu/menu-bg.jpg'
+import soupImg from '../../../assets/menu/soup-bg.jpg'
+import saladImg from '../../../assets/menu/salad-bg.jpg'
+import pizzaImg from '../../../assets/menu/pizza-bg.jpg'
+import dessertImg from '../../../assets/menu/dessert-bg.jpeg'
+import useMenu from '../../../hooks/useMenu';
+import SectionTitle from '../../../components/SectionTitle/SectionTitle';
 import MenuCategory from '../MenuCategory/MenuCategory';
+
 
 const Menu = () => {
     const [menu] = useMenu();
-    const dessert = menu.filter(item=>item.category==='dessert')
-    const soup = menu.filter(item=>item.category==='soup')
-    const salad = menu.filter(item=>item.category==='salad')
-    const pizza = menu.filter(item=>item.category==='pizza')
-    const offered = menu.filter(item=>item.category==='offered')
-
+    const desserts = menu.filter(item => item.category === 'dessert');
+    const soup = menu.filter(item => item.category === 'soup');
+    const salad = menu.filter(item => item.category === 'salad');
+    const pizza = menu.filter(item => item.category === 'pizza');
+    const offered = menu.filter(item => item.category === 'offered');
     return (
         <div>
             <Helmet>
-        <title>Food Mania  | Menu</title>
-        <link rel="canonical" href="https://www.tacobell.com/" />
-      </Helmet>
-      <Cover
-      bgImg={menuBg}
-      title={"Our Menu"}
-      ></Cover>
-      <SectionTitle
-      subHeading={"Don't Miss"}
-      heading={"Today's Offer"}
-      ></SectionTitle>
-      <MenuCategory
-      items={offered}
-      ></MenuCategory>
-      <MenuCategory
-      items={dessert}
-      title={"dessert"}
-      img={dessertBg}
-      ></MenuCategory>
-      <MenuCategory
-      items={pizza}
-      title={"pizza"}
-      img={pizzaBg}
-      ></MenuCategory>
-      <MenuCategory
-      items={soup}
-      title={"soup"}
-      img={soupBg}
-      ></MenuCategory>
-      <MenuCategory
-      items={salad}
-      title={"salad"}
-      img={saladBg}
-      ></MenuCategory>
-
+                <title>Bistro Boss | Menu</title>
+            </Helmet>
+            <Cover img={menuImg} title="our menu"></Cover>
+            {/* main cover */}
+            <SectionTitle subHeading="Don't Miss" heading="Today's Offer"></SectionTitle>
+            {/* offered menu items */}
+            <MenuCategory items={offered}></MenuCategory>
+            {/* dessert menu items  */}
+            <MenuCategory items={desserts} title="dessert" img={dessertImg}></MenuCategory>
+            <MenuCategory items={pizza} title={"pizza"} img={pizzaImg}></MenuCategory>
+            <MenuCategory items={salad} title={"salad"} img={saladImg}></MenuCategory>
+            <MenuCategory items={soup} title={"soup"} img={soupImg}></MenuCategory>
         </div>
     );
 };
