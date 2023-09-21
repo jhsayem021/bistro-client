@@ -6,9 +6,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const ManageItems = () => {
-    const [menu, , refetch] = useMenu();
+    const [  menu , loading, refetch] = useMenu();
     const [axiosSecure] = useAxiosSecure();
-
+    console.log(menu)
     const handleDelete = item => {
         Swal.fire({
             title: 'Are you sure?',
@@ -24,14 +24,17 @@ const ManageItems = () => {
                 axiosSecure.delete(`/menu/${item._id}`)
                     .then(res => {
                         console.log('deleted res', res.data);
-                        if (res.data.deletedCount > 0) {
-                            refetch();
+                        console.log('deleted res', res.data.acknowledged);
+
+                        if (res.data.acknowledged === true) {
+                            
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',
                                 'success'
                             )
                         }
+                        refetch();
                     })
 
             }

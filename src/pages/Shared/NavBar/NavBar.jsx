@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaCartArrowDown, FaShoppingCart } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useCart from "../../../hooks/useCart";
@@ -17,28 +17,19 @@ const NavBar = () => {
     }
 
     const navOptions = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/menu">Our Menu</Link></li>
-        <li><Link to="/order/salad">Order Food</Link></li>
+        <li><Link className="hover:text-white hover:bg-[#D1A054]" to="/">Home</Link></li>
+        <li><Link className="hover:text-white hover:bg-[#D1A054]" to="/menu">Our Menu</Link></li>
+        <li><Link className="hover:text-white hover:bg-[#D1A054]" to="/order/salad">Order Food</Link></li>
         {
-            isAdmin ? <li><Link to="/dashboard/adminhome">Dashboard</Link></li> : 
-            <li><Link to="/dashboard/userhome">Dashboard</Link></li>
-        }
-        <li>
-            <Link to="/dashboard/mycart">
-                <button className="btn gap-2">
-                    <FaShoppingCart></FaShoppingCart>
-                    <div className="badge badge-secondary">+{cart?.length || 0}</div>
-                </button>
-            </Link>
-        </li>
-        {
-            user ? <>
-                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
-            </> : <>
-                <li><Link to="/login">Login</Link></li>
+           user && <>
+           {
+             isAdmin ? <li><Link className="hover:text-white hover:bg-[#D1A054]" to="/dashboard/adminhome">Dashboard</Link></li> : 
+             <li><Link className="hover:text-white hover:bg-[#D1A054]" to="/dashboard/userhome">Dashboard</Link></li>
+           }
             </>
         }
+      
+        
     </>
 
     return (
@@ -61,7 +52,36 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                {
+            user ? <><div className="flex justify-items-center items-center "><div className="flex justify-items-between">
+              <button className="btn">
+              <FaCartArrowDown  />  
+                <Link to="/dashboard/mycart"><div className="badge badge-primary"><h5 className="" >+{cart?.length || 0}</h5></div></Link>
+              </button>
+              <button onClick={handleLogOut} className="btn btn-active btn-ghost">Log Out</button>
+            </div>
+              <div className="group">
+                <div className="avatar online  ">
+                  <div className="w-12 bg-slate-200 rounded-full">
+                    <img src={user.photoURL} />
+                  </div>
+
+                </div>
+                <div className="text-center hidden group-hover:block absolute right-0 stats shadow">
+                  
+
+                    <div className="stat">
+                      <div className="stat-title font-bold text-primary">{user?.displayName}</div>
+                      <div className="stat-title text-black">{user?.email}</div>
+                    </div>
+
+                 
+                </div>
+              </div>
+            </div></> : <>
+              <Link className="mr-4" to="/login" >Login</Link>
+            </>
+          }
                 </div>
             </div>
         </>
