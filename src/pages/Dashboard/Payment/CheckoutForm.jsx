@@ -4,6 +4,8 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import './CheckoutForm.css'
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = ({ cart, price }) => {
@@ -15,7 +17,7 @@ const CheckoutForm = ({ cart, price }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
-
+    const navigate = useNavigate();
     useEffect(() => {
         if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
@@ -91,8 +93,17 @@ const CheckoutForm = ({ cart, price }) => {
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log(res.data);
-                    if (res.data.result.insertedId) {
-                        // display confirm
+                    if (res.data.insertResult.insertedId) {
+                        Swal.fire({
+                            title: 'User Login Successful.',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        });
+                        navigate('/dashboard/mycart');
                     }
                 })
         }
