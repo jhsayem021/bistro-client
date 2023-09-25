@@ -22,7 +22,7 @@ const useCart = () => {
 export default useCart;
 
 // queryFn: async () => {
-        //     const res = await fetch(`https://bistro-server-olive.vercel.app/carts?email=${user?.email}`, { headers: {
+        //     const res = await fetch(`https://food-mania-server-omega.vercel.app/carts?email=${user?.email}`, { headers: {
         //         authorization: `bearer ${token}`
         //     }})
         //     return res.json();
