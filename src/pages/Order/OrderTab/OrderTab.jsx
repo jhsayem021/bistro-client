@@ -1,8 +1,9 @@
 import FoodCard from '../../../components/FoodCard/FoodCard';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/pagination";
+import { Pagination } from 'swiper';
 
 // TODO: implement pagination here on this page
 const OrderTab = ({ items }) => {
@@ -21,7 +22,7 @@ const OrderTab = ({ items }) => {
                 className="mySwiper "
             >
                 <SwiperSlide>
-                    <div className='grid md:grid-cols-3 gap-10 my-4'>
+                    <div className='grid md:grid-cols-3 gap-10  my-4 '>
                         {
                             items.map(item => <FoodCard
                                 key={item._id}

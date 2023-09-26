@@ -37,7 +37,7 @@ const NavBar = () => {
 
     return (
         <>
-            <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-[#eb910b] text-white">
+            <div className="navbar fixed z-10 bg-opacity-80 max-w-screen-xl bg-[#D1A054] text-white py-4">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -57,14 +57,14 @@ const NavBar = () => {
                 <div className="navbar-end">
                 {
             user ? <><div className="flex justify-items-center items-center "><div className="flex justify-items-between">
-              <button className="btn mr-3">
-              <FaCartArrowDown  />  
-                <Link to="/dashboard/mycart"><div className="badge badge-primary"><h5 className="" >+{cart?.length || 0}</h5></div></Link>
-              </button>
+              <div className="flex items-center mr-3 ">
+              
+                <Link to="/dashboard/mycart"><div className="badge border-0 bg-amber-500 text-white px-4 py-5"><FaCartArrowDown/>=<h5 className=" bg-primary px-2 py-1 rounded-2xl ms-2" >+{cart?.length || 0}</h5></div></Link>
+              </div>
               <button onClick={handleLogOut} className="btn btn-active btn-ghost md:inline hidden">Log Out</button>
             </div>
               <div className="group">
-                <div className="avatar online  ">
+                <div className="avatar online  ms-3">
                   <div className="w-12 bg-slate-200 rounded-full">
                     <img src={user.photoURL} />
                   </div>
@@ -73,7 +73,7 @@ const NavBar = () => {
                 <div className="text-center hidden group-hover:block absolute right-0 stats shadow">
                   
 
-                    <div className="stat">
+                    <div className="stat bg-white">
                       <div className="stat-title font-bold text-primary">{user?.displayName}</div>
                       <div className="stat-title text-black">{user?.email}</div>
                     </div>

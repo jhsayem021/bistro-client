@@ -44,17 +44,17 @@ const ManageItems = () => {
     return (
         <div className="w-full">
             <SectionTitle heading="Manage All Items" subHeading="Hurry up"></SectionTitle>
-            <div className="overflow-x-auto w-full">
+            <div className="overflow-x-auto w-full ">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Item</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th className="bg-[#D1A054] text-white">#</th>
+                            <th className="bg-[#D1A054] text-white">Item</th>
+                            <th className="bg-[#D1A054] text-white">Category</th>
+                            <th className="bg-[#D1A054] text-white">Price</th>
+                            <th className="bg-[#D1A054] text-white">Update</th>
+                            <th className="bg-[#D1A054] text-white">Delete</th>
                         </tr>
                     </thead>
                     <tbody>

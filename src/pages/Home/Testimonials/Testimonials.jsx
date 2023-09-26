@@ -1,6 +1,6 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -14,7 +14,7 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('https://food-mania-server-omega.vercel.app/reviews')
+        fetch('http://localhost:8000/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -32,13 +32,13 @@ const Testimonials = () => {
                     reviews.map(review => <SwiperSlide
                         key={review._id}
                     >
-                        <div className="flex flex-col items-center mx-24 my-16">
+                        <div className="flex flex-col items-center md:mx-24 md:my-16 m-5">
                             <Rating
                                 style={{ maxWidth: 180 }}
                                 value={review.rating}
                                 readOnly
                             />
-                            <p className="py-8">{review.details}</p>
+                            <p className="md:py-8 p-5">{review.details}</p>
                             <h3 className="text-2xl text-orange-400">{review.name}</h3>
                         </div>
                     </SwiperSlide>)

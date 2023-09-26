@@ -23,7 +23,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const saveUser = { name: data.name, email: data.email }
-                        fetch('https://food-mania-server-omega.vercel.app/users', {
+                        fetch('http://localhost:8000/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

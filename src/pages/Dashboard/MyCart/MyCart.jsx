@@ -3,7 +3,7 @@ import useCart from "../../../hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 const MyCart = () => {
     const [cart, refetch] = useCart();
     console.log(cart);
@@ -21,7 +21,7 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://food-mania-server-omega.vercel.app/carts/${item._id}`, {
+                fetch(`http://localhost:8000/carts/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -40,13 +40,16 @@ const MyCart = () => {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full ">
             <Helmet>
                 <title>Food Mania | My Cart</title>
             </Helmet>
-            <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
-                <h3 className="text-3xl">Total Items: {cart.length}</h3>
-                <h3 className="text-3xl">Total Price: ${total}</h3>
+            <SectionTitle heading="My Cart" subHeading="Checkout now" ></SectionTitle>
+            <div className="uppercase  flex mb-8 justify-evenly items-center">
+                <div className="md:flex inline md:justify-between">
+                <h3 className="md:text-2xl text-lg">Total Items: {cart.length}</h3>
+                <h3 className="md:ms-6 md:text-2xl text-lg">Total Price: ${total}</h3>
+                </div>
                 <Link to="/dashboard/payment">
                     <button className="btn btn-warning btn-sm">PAY</button>
                 </Link>
@@ -54,13 +57,13 @@ const MyCart = () => {
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Food</th>
-                            <th>Item Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                    <thead >
+                        <tr >
+                            <th className="bg-[#D1A054] text-white" >#</th>
+                            <th className="bg-[#D1A054] text-white" >Food</th>
+                            <th className="bg-[#D1A054] text-white" >Item Name</th>
+                            <th className="bg-[#D1A054] text-white" >Price</th>
+                            <th className="bg-[#D1A054] text-white" >Action</th>
                         </tr>
                     </thead>
                     <tbody>

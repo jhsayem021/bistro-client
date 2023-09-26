@@ -16,7 +16,7 @@ const FoodCard = ({ item }) => {
         console.log(item);
         if(user && user.email){
             const cartItem = {menuItemId: _id, name, image, price, email: user.email}
-            fetch('https://food-mania-server-omega.vercel.app/carts', {
+            fetch('http://localhost:8000/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -53,9 +53,9 @@ const FoodCard = ({ item }) => {
         }
     }
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-5/6 mx-auto bg-base-100 shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
-            <p className="absolute right-0 mr-4 mt-4 px-4 bg-slate-900 text-white">${price}</p>
+            <p className="absolute right-0 mr-4 mt-4 px-4 py-2 rounded-lg bg-orange-400 text-white">${price}</p>
             <div className="card-body flex flex-col items-center">
                 <h2 className="card-title">{name}</h2>
                 <p>{recipe}</p>
