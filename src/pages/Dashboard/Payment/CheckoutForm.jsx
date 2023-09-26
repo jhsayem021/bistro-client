@@ -95,7 +95,7 @@ const CheckoutForm = ({ cart, price }) => {
                     console.log(res.data);
                     if (res.data.insertResult.insertedId) {
                         Swal.fire({
-                            title: 'User Login Successful.',
+                            title: 'Payment Successful.',
                             showClass: {
                                 popup: 'animate__animated animate__fadeInDown'
                             },
@@ -113,7 +113,7 @@ const CheckoutForm = ({ cart, price }) => {
 
     return (
         <>
-            <form className="w-2/3 m-8" onSubmit={handleSubmit}>
+            <form className="md:w-2/3 md:mx-auto w-full md:m-8 m-2 " onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
@@ -130,7 +130,7 @@ const CheckoutForm = ({ cart, price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
+                <button className="btn bg-[#FBBD23] btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
