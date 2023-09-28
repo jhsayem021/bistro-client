@@ -14,7 +14,7 @@ const AllUsers = () => {
     })
 
     const handleMakeAdmin = user =>{
-        fetch(`https://bistro-server-olive.vercel.app/users/admin/${user._id}`, {
+        fetch(`https://bistro-server-qpd5.onrender.com/users/admin/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())

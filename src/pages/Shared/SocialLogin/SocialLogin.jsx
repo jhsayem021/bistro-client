@@ -17,7 +17,7 @@ const SocialLogin = () => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
-                fetch('https://bistro-server-olive.vercel.app/users', {
+                fetch('https://bistro-server-qpd5.onrender.com/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
