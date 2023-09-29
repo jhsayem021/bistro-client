@@ -5,6 +5,8 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import loginBanner from '../../assets/others/authentication2.png'
+import loginBG from '../../assets/menu/Banner.png'
 
 const SignUp = () => {
 
@@ -52,16 +54,23 @@ const SignUp = () => {
             })
     };
 
+    const backgroundImg = {
+        backgroundImage: `url(${loginBG})`,
+        backgroundRepeat: 'no-repeat'
+      }
+
     return (
         <>
             <Helmet>
                 <title>Food Mania | Sign Up</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Sign up now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <div style={backgroundImg} className="hero min-h-screen bg-base-200">
+                <div style={backgroundImg} className="hero-content flex-col lg:flex-row-reverse">
+                    <div className="text-center  md:w-1/2 ">
+                        <h1 className="text-5xl font-bold md:mb-10 mb-5">Sign up now!</h1>
+                        <div>
+                            <img  src={loginBanner} alt="" />
+                        </div>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -108,7 +117,7 @@ const SignUp = () => {
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p><small>Already have an account <Link to="/login">Login</Link></small></p>
+                        <p className='text-center text-[#e9ac51]'><small>Already have an account <Link to="/login">Login</Link></small></p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>

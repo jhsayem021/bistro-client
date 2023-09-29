@@ -24,9 +24,9 @@ const ManageItems = () => {
                 axiosSecure.delete(`/menu/${item._id}`)
                     .then(res => {
                         console.log('deleted res', res.data);
-                        console.log('deleted res', res.data.acknowledged);
+                        console.log('deleted res', res.data.deletedCount);
 
-                        if (res.data.acknowledged === true) {
+                        if (res.data.deletedCount > 0) {
                             
                             Swal.fire(
                                 'Deleted!',
@@ -53,7 +53,7 @@ const ManageItems = () => {
                             <th className="bg-[#D1A054] text-white">Item</th>
                             <th className="bg-[#D1A054] text-white">Category</th>
                             <th className="bg-[#D1A054] text-white">Price</th>
-                            <th className="bg-[#D1A054] text-white">Update</th>
+                          
                             <th className="bg-[#D1A054] text-white">Delete</th>
                         </tr>
                     </thead>
@@ -79,9 +79,7 @@ const ManageItems = () => {
                                     {item.category}
                                 </td>
                                 <td className="text-right">${item.price}</td>
-                                <td>
-                                    <button className="btn btn-ghost btn-xs">details</button>
-                                </td>
+                                
                                 <td>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
